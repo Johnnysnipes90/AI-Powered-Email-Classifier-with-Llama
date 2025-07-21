@@ -1,3 +1,10 @@
 llama-cpp-python
-pandas
 streamlit
+matplotlib
+scikit-learn
+numpy
+pandas
+sentence-transformers
+transformers
+torch
+streamlit-extras

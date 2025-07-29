@@ -136,7 +136,7 @@ To deploy:
 
 - ⚠️ Make sure to remove large model files or host them separately (or use smaller models due to file size limits)
 
-
+---
 ## 🧠 How It Works
 The application uses few-shot prompting with curated examples representing each category. It builds a structured prompt that guides the LLaMA model to classify the new input.
 **Sample prompt format

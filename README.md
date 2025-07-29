@@ -1,53 +1,62 @@
-# AI-Powered-Email-Classifier-with-Llama
-AI-powered inbox assistant to classify and prioritize emails using Llama's local LLM capabilities.
+# 📧 AI-Powered Email Classifier with LLaMA
 
-## 🚀 Project Description
-This project demonstrates how to use a local LLaMA-based LLM (model.gguf) to classify email content into three meaningful categories: Priority, Updates, or Promotions. By leveraging prompt engineering, we integrate LLaMA with a real-world dataset to build a powerful, privacy-preserving inbox assistant that runs entirely offline.
-
-**Main Features:**
-- 🔍 Classify emails into: `Priority`, `Updates`, or `Promotions`
-- 🌓 Toggle between Light and Dark Mode
-- 🔀 Use curated examples or generate random examples
-- 💻 Runs fully offline — no external API required
-- ⚡ Powered by `tinyllama-1.1b-chat-v0.3.Q4_K_M.gguf` (quantized LLaMA model)
+AI-powered inbox assistant to classify and prioritize emails using LLaMA's local LLM capabilities — completely offline, privacy-first, and elegantly packaged with Streamlit.
 
 ---
 
-### 🧪 Technologies Used
-- Python
+## 🚀 Project Description
 
-- LLaMA.cpp (or Python bindings like llama-cpp-python)
+This project demonstrates how to use a local LLaMA-based LLM (`.gguf` model) to classify email content into three meaningful categories:
 
-- Pandas
+- **Priority**
+- **Updates**
+- **Promotions**
 
-- Prompt Engineering
+By leveraging prompt engineering and few-shot examples, we integrate LLaMA with real-world styled email data to build a powerful, **privacy-preserving inbox assistant** that runs entirely offline — no cloud APIs required.
 
-- Streamlit (UI)
+---
 
-- Git
+### 🔧 Features
+
+- 🔍 Classify emails into: `Priority`, `Updates`, or `Promotions`
+- 🌓 Toggle between Light and Dark Mode
+- 🔀 Choose curated examples or generate random ones
+- 💻 Fully offline — powered by a local quantized `.gguf` LLM model
+- ⚡ Built with `tinyllama-1.1b-chat-v0.3.Q4_K_M.gguf` (lightweight and fast!)
+
+---
+
+## 🧪 Technologies Used
+
+- 🐍 Python 3.10+
+- 🧠 [`llama-cpp-python`](https://github.com/abetlen/llama-cpp-python)
+- 📊 Pandas
+- 🧩 Prompt Engineering
+- 🖼️ Streamlit
+- 🧰 Streamlit Extras (`st_toggle_switch`, `add_vertical_space`)
+- 🧪 Custom Dataset
+
 ---
 
 ## 📁 Dataset
-Custom CSV containing real-world styled emails with 3 labels:
 
-- Priority
+A custom CSV dataset `email_categories_data.csv` simulating real-world email content, labeled with one of:
 
-- Promotions
+- `Priority`
+- `Promotions`
+- `Updates`
 
-- Updates
+---
 
 ## 🧠 Model Workflow Summary
-- 1. Load and Preprocess Email Data
 
-- 2. Load LLaMA model (model.gguf) locally
+1. Load and preprocess email data  
+2. Load quantized LLaMA `.gguf` model locally  
+3. Craft structured few-shot classification prompt  
+4. Query model with input email  
+5. Extract and display predicted category  
 
-- 3. Craft Classification Prompt Template
-
-- 4. Query model with each email to get predicted category
-
-- 5. Store and Evaluate Results
-
-
+---
 
 # 📁 Project Structure
 Use a well-organized, modular file structure:
@@ -58,8 +67,7 @@ llama-email-classifier/
 ├── model/
 │   └── model.gguf  # Pre-downloaded LLaMA model
 ├── notebooks/
-│   └── 01_data_exploration.ipynb
-│   └── 02_llama_classification.ipynb
+│   └── llama_classification.ipynb
 ├── src/
 │   ├── classifier.py
 │   ├── llama_initializer.py
@@ -76,17 +84,20 @@ llama-email-classifier/
 
 ## 🛠️ Installation & Setup
 
-### 1. Clone this repository
+### Clone this repository
 
 ```bash
 git clone https://github.com/Johnnysnipes90/llama-email-classifier.git
 cd llama-email-classifier
 ```
 
-### Create a virtual environment (recommended)
+### Create a virtual environment
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
+# On Windows
+venv\Scripts\activate
+# On macOS/Linux
+source venv/bin/activate
 ```
 
 ### Install dependencies
@@ -95,8 +106,10 @@ pip install -r requirements.txt
 ```
 ```txt
 llama-cpp-python
+streamlit
 pandas
-streamlit  
+pillow
+streamlit-extras
 ```
 
 ### Download the Model
@@ -108,6 +121,20 @@ You can download TinyLLaMA from Hugging Face
 ```bash
 streamlit run app.py
 ```
+## 🌍 Deploying to Streamlit Cloud
+To deploy:
+
+- Push this repo to your GitHub
+
+- Go to https://streamlit.io/cloud
+
+- Connect your GitHub account and select this repo
+
+- Set the Python version and dependencies using requirements.txt
+
+- Add app.py as the main entry point
+
+- ⚠️ Make sure to remove large model files or host them separately (or use smaller models due to file size limits)
 
 
 ## 🧠 How It Works
